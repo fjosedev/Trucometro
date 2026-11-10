@@ -1,0 +1,41 @@
+# http://editorconfig.org
+
+root = true
+
+# Standard settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Kotlin and Kotlin Script files
+[*.{kt,kts}]
+max_line_length = 100
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
+ij_kotlin_name_count_to_use_star_import = 99
+ktfmt_style = kotlinlang
+
+# XML Files (Android Layouts, Drawables, Manifest, Resources)
+[*.xml]
+max_line_length = 100
+ij_xml_keep_line_breaks = true
+ij_xml_align_attributes = false
+ij_xml_space_inside_empty_tag = true
+
+# Configuration & Data files (TOML, JSON, YAML, Gradle properties)
+[*.{toml,json,yml,yaml,properties}]
+indent_size = 2
+
+# Windows Batch scripts (gradlew.bat requires CRLF)
+[*.bat]
+end_of_line = crlf
+
+# Markdown Documentation
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
