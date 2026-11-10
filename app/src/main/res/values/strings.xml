@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Trucômetro</string>
+    <string name="label_player_1">Jogador 1:</string>
+    <string name="label_player_2">Jogador 2:</string>
+    <string name="btn_history">Hist. de Jogadas</string>
+    <string name="btn_reset_history">Zerar Histórico</string>
+    <string name="btn_edit_names">Inf. Nomes</string>
+    <string name="titulo_nomes">Informar Nomes</string>
+    <string name="titulo_historico">Histórico de Jogadas</string>
+    <string name="titulo_vitorias">Vitórias</string>
+    <string name="hint_nome_j1">Nome do Jogador 1</string>
+    <string name="hint_nome_j2">Nome do Jogador 2</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_voltar">Voltar</string>
+</resources>
