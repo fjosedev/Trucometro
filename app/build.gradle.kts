@@ -1,5 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.detekt)
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    source.setFrom("src/main", "src/test", "src/androidTest")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    jvmTarget = "17"
 }
 
 android {

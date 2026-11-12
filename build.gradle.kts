@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.spotless)
-    alias(libs.plugins.detekt)
+    alias(libs.plugins.detekt) apply false
 }
 
 spotless {
@@ -16,11 +16,6 @@ spotless {
         targetExclude("**/build/**/*.kts")
         ktfmt().kotlinlangStyle()
     }
-}
-
-detekt {
-    buildUponDefaultConfig = true
-    allRules = false
 }
 
 // Tarefa compatível com Configuration Cache para instalar Git Hooks
