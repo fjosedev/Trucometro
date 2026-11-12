@@ -7,95 +7,95 @@ import org.junit.Rule
 import org.junit.Test
 
 class TesteViewModelPrincipal {
-  @get:Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @get:Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-  @Test
-  fun estadoInicial_deveTerJogadoresPadraoEPontuacoesZeradas() {
-    val viewModel = MainViewModel()
+    @Test
+    fun estadoInicial_deveTerJogadoresPadraoEPontuacoesZeradas() {
+        val viewModel = MainViewModel()
 
-    val state = viewModel.estadoJogo.value
-    assertEquals("Jogador 1", state?.nomeJogador1)
-    assertEquals("Jogador 2", state?.nomeJogador2)
-    assertEquals(0, state?.pontosJogador1)
-    assertEquals(0, state?.pontosJogador2)
-    assertEquals(0, state?.vitoriasJogador1)
-    assertEquals(0, state?.vitoriasJogador2)
-  }
+        val state = viewModel.estadoJogo.value
+        assertEquals("Jogador 1", state?.nomeJogador1)
+        assertEquals("Jogador 2", state?.nomeJogador2)
+        assertEquals(0, state?.pontosJogador1)
+        assertEquals(0, state?.pontosJogador2)
+        assertEquals(0, state?.vitoriasJogador1)
+        assertEquals(0, state?.vitoriasJogador2)
+    }
 
-  @Test
-  fun adicionarPontos_deveAtualizarJogadorSelecionadoEExibirMensagem() {
-    val viewModel = MainViewModel()
+    @Test
+    fun adicionarPontos_deveAtualizarJogadorSelecionadoEExibirMensagem() {
+        val viewModel = MainViewModel()
 
-    viewModel.adicionarPontos(jogador = 2, pontos = 3)
+        viewModel.adicionarPontos(jogador = 2, pontos = 3)
 
-    assertEquals(0, viewModel.estadoJogo.value?.pontosJogador1)
-    assertEquals(3, viewModel.estadoJogo.value?.pontosJogador2)
-    assertEquals("+3 para Jogador 2", viewModel.mensagemSnackbar.value)
-  }
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador1)
+        assertEquals(3, viewModel.estadoJogo.value?.pontosJogador2)
+        assertEquals("+3 para Jogador 2", viewModel.mensagemSnackbar.value)
+    }
 
-  @Test
-  fun adicionarDozePontos_deveRegistrarVitoriaEZerarPontuacoesDaRodada() {
-    val viewModel = MainViewModel()
-    viewModel.atualizarNomes("Ana", "Bia")
-    viewModel.adicionarPontos(jogador = 1, pontos = 9)
+    @Test
+    fun adicionarDozePontos_deveRegistrarVitoriaEZerarPontuacoesDaRodada() {
+        val viewModel = MainViewModel()
+        viewModel.atualizarNomes("Ana", "Bia")
+        viewModel.adicionarPontos(jogador = 1, pontos = 9)
 
-    viewModel.adicionarPontos(jogador = 1, pontos = 3)
+        viewModel.adicionarPontos(jogador = 1, pontos = 3)
 
-    val state = viewModel.estadoJogo.value
-    assertEquals(1, state?.vitoriasJogador1)
-    assertEquals(0, state?.pontosJogador1)
-    assertEquals(0, state?.pontosJogador2)
-    assertEquals("Ana venceu a partida!", viewModel.eventoVitoria.value)
-  }
+        val state = viewModel.estadoJogo.value
+        assertEquals(1, state?.vitoriasJogador1)
+        assertEquals(0, state?.pontosJogador1)
+        assertEquals(0, state?.pontosJogador2)
+        assertEquals("Ana venceu a partida!", viewModel.eventoVitoria.value)
+    }
 
-  @Test
-  fun desfazerUltimaPontuacao_deveRestaurarEstadoAnteriorApenasUmaVez() {
-    val viewModel = MainViewModel()
-    viewModel.adicionarPontos(jogador = 1, pontos = 6)
-    viewModel.adicionarPontos(jogador = 2, pontos = 3)
+    @Test
+    fun desfazerUltimaPontuacao_deveRestaurarEstadoAnteriorApenasUmaVez() {
+        val viewModel = MainViewModel()
+        viewModel.adicionarPontos(jogador = 1, pontos = 6)
+        viewModel.adicionarPontos(jogador = 2, pontos = 3)
 
-    viewModel.desfazerUltimaPontuacao()
+        viewModel.desfazerUltimaPontuacao()
 
-    assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
-    assertEquals(0, viewModel.estadoJogo.value?.pontosJogador2)
-    viewModel.desfazerUltimaPontuacao()
-    assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
-  }
+        assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador2)
+        viewModel.desfazerUltimaPontuacao()
+        assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
+    }
 
-  @Test
-  fun atualizarNomes_deveIgnorarNomesVaziosEZerarHistoricoDeveRestaurarPadroes() {
-    val viewModel = MainViewModel()
-    viewModel.atualizarNomes("Ana", "Bia")
-    viewModel.adicionarPontos(jogador = 1, pontos = 6)
-    viewModel.atualizarNomes(" ", "Carlos")
+    @Test
+    fun atualizarNomes_deveIgnorarNomesVaziosEZerarHistoricoDeveRestaurarPadroes() {
+        val viewModel = MainViewModel()
+        viewModel.atualizarNomes("Ana", "Bia")
+        viewModel.adicionarPontos(jogador = 1, pontos = 6)
+        viewModel.atualizarNomes(" ", "Carlos")
 
-    assertEquals("Ana", viewModel.estadoJogo.value?.nomeJogador1)
-    assertEquals("Carlos", viewModel.estadoJogo.value?.nomeJogador2)
-    assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
+        assertEquals("Ana", viewModel.estadoJogo.value?.nomeJogador1)
+        assertEquals("Carlos", viewModel.estadoJogo.value?.nomeJogador2)
+        assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
 
-    viewModel.zerarHistorico()
+        viewModel.zerarHistorico()
 
-    val state = viewModel.estadoJogo.value
-    assertEquals("Jogador 1", state?.nomeJogador1)
-    assertEquals("Jogador 2", state?.nomeJogador2)
-    assertEquals(0, state?.pontosJogador1)
-    assertEquals(0, state?.pontosJogador2)
-    assertEquals(0, state?.vitoriasJogador1)
-    assertEquals(0, state?.vitoriasJogador2)
-    assertEquals("Histórico e pontuações foram zerados!", viewModel.mensagemToast.value)
-  }
+        val state = viewModel.estadoJogo.value
+        assertEquals("Jogador 1", state?.nomeJogador1)
+        assertEquals("Jogador 2", state?.nomeJogador2)
+        assertEquals(0, state?.pontosJogador1)
+        assertEquals(0, state?.pontosJogador2)
+        assertEquals(0, state?.vitoriasJogador1)
+        assertEquals(0, state?.vitoriasJogador2)
+        assertEquals("Histórico e pontuações foram zerados!", viewModel.mensagemToast.value)
+    }
 
-  @Test
-  fun limparEventos_deveRemoverMensagensDeSnackbarToastEVitoria() {
-    val viewModel = MainViewModel()
-    viewModel.adicionarPontos(jogador = 1, pontos = 12)
-    viewModel.zerarHistorico()
-    viewModel.limparMensagemSnackbar()
-    viewModel.limparMensagemToast()
-    viewModel.limparEventoVitoria()
+    @Test
+    fun limparEventos_deveRemoverMensagensDeSnackbarToastEVitoria() {
+        val viewModel = MainViewModel()
+        viewModel.adicionarPontos(jogador = 1, pontos = 12)
+        viewModel.zerarHistorico()
+        viewModel.limparMensagemSnackbar()
+        viewModel.limparMensagemToast()
+        viewModel.limparEventoVitoria()
 
-    assertNull(viewModel.mensagemSnackbar.value)
-    assertNull(viewModel.mensagemToast.value)
-    assertNull(viewModel.eventoVitoria.value)
-  }
+        assertNull(viewModel.mensagemSnackbar.value)
+        assertNull(viewModel.mensagemToast.value)
+        assertNull(viewModel.eventoVitoria.value)
+    }
 }

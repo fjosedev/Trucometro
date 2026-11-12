@@ -1,4 +1,5 @@
 package dev.fernandojose.trucometro.model
+
 // Classe de dados que guarda o estado atual da partida e gerencia a lógica das pontuações e
 // histórico.
 data class Trucometro(
