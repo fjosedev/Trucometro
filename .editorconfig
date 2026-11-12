@@ -14,11 +14,13 @@ indent_size = 4
 # Kotlin and Kotlin Script files
 [*.{kt,kts}]
 max_line_length = 100
+ij_continuation_indent_size = 4
+ij_kotlin_continuation_indent_size = 4
 ij_kotlin_allow_trailing_comma = true
 ij_kotlin_allow_trailing_comma_on_call_site = true
-ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
-ij_kotlin_name_count_to_use_star_import = 99
-ktfmt_style = kotlinlang
+ij_kotlin_imports_layout = *
+ij_kotlin_name_count_to_use_star_import = 9999
+ij_kotlin_name_count_to_use_star_import_for_members = 9999
 
 # XML Files (Android Layouts, Drawables, Manifest, Resources)
 [*.xml]
