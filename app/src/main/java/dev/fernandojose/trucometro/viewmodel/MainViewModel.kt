@@ -10,6 +10,9 @@ import dev.fernandojose.trucometro.model.Trucometro
 // (como botões, cores ou XMLs), mas contém toda a lógica para manipular as pontuações e estados do
 // jogo.
 class MainViewModel : ViewModel() {
+
+    // Variáveis de estado
+
     // 1. Estado principal que contém todos os dados do Trucometro (Nomes, Pontos e Vitórias)
     private val _estadoJogo = MutableLiveData(Trucometro())
     val estadoJogo: LiveData<Trucometro>

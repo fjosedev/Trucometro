@@ -56,10 +56,12 @@ class MainActivity : AppCompatActivity() {
     private fun configurarObservadores() {
         // Observa as alterações no ViewModel e atualiza os TextViews do XML
         viewModel.estadoJogo.observe(this) { jogo ->
-            binding.tvLabelPlayer1.text = "${jogo.nomeJogador1}:"
+            binding.tvLabelPlayer1.text = jogo.nomeJogador1
+            binding.tvLabelPlayer1.append(":")
             binding.tvScorePlayer1.text = jogo.pontosJogador1.toString()
 
-            binding.tvLabelPlayer2.text = "${jogo.nomeJogador2}:"
+            binding.tvLabelPlayer2.text = jogo.nomeJogador2
+            binding.tvLabelPlayer2.append(":")
             binding.tvScorePlayer2.text = jogo.pontosJogador2.toString()
         }
 
