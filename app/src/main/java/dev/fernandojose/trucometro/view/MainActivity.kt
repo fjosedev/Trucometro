@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 
     // Infla o layout via View Binding
     binding = ActivityMainBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    val view = binding.root
+    setContentView(view)
 
     // Ajusta as barras do sistema no ScrollView (android:id="@+id/main")
     ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -51,10 +52,10 @@ class MainActivity : AppCompatActivity() {
   private fun configurarObservadores() {
     // Observa as alterações no ViewModel e atualiza os TextViews do XML
     viewModel.estadoJogo.observe(this) { jogo ->
-      binding.tvLabelPlayer1.text = "${jogo.nomeJogador1}:"
+      binding.tvLabelPlayer1.text = String.format("%s:", jogo.nomeJogador1)
       binding.tvScorePlayer1.text = jogo.pontosJogador1.toString()
 
-      binding.tvLabelPlayer2.text = "${jogo.nomeJogador2}:"
+      binding.tvLabelPlayer2.text = String.format("%s:", jogo.nomeJogador2)
       binding.tvScorePlayer2.text = jogo.pontosJogador2.toString()
     }
 
