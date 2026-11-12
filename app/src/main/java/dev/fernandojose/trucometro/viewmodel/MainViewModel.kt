@@ -3,6 +3,7 @@ package dev.fernandojose.trucometro.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dev.fernandojose.trucometro.model.PONTOS_VITORIA
 import dev.fernandojose.trucometro.model.Trucometro
 
 // Atua como o cérebro de regras de negócio da aplicação. Ela não sabe nada sobre elementos visuais
@@ -44,14 +45,14 @@ class MainViewModel : ViewModel() {
 
         if (jogador == 1) {
             jogoAtual.pontosJogador1 += pontos
-            if (jogoAtual.pontosJogador1 >= 12) {
+            if (jogoAtual.pontosJogador1 >= PONTOS_VITORIA) {
                 jogoAtual.vitoriasJogador1++
                 _eventoVitoria.value = "${jogoAtual.nomeJogador1} venceu a partida!"
                 resetarPontosPartida(jogoAtual)
             }
         } else if (jogador == 2) {
             jogoAtual.pontosJogador2 += pontos
-            if (jogoAtual.pontosJogador2 >= 12) {
+            if (jogoAtual.pontosJogador2 >= PONTOS_VITORIA) {
                 jogoAtual.vitoriasJogador2++
                 _eventoVitoria.value = "${jogoAtual.nomeJogador2} venceu a partida!"
                 resetarPontosPartida(jogoAtual)

@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import dev.fernandojose.trucometro.databinding.ActivityMainBinding
+import dev.fernandojose.trucometro.model.PONTOS_NOVE
+import dev.fernandojose.trucometro.model.PONTOS_SEIS
+import dev.fernandojose.trucometro.model.PONTOS_TRUCO
+import dev.fernandojose.trucometro.model.PONTOS_VITORIA
 import dev.fernandojose.trucometro.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -52,10 +56,10 @@ class MainActivity : AppCompatActivity() {
     private fun configurarObservadores() {
         // Observa as alterações no ViewModel e atualiza os TextViews do XML
         viewModel.estadoJogo.observe(this) { jogo ->
-            binding.tvLabelPlayer1.text = String.format("%s:", jogo.nomeJogador1)
+            binding.tvLabelPlayer1.text = "${jogo.nomeJogador1}:"
             binding.tvScorePlayer1.text = jogo.pontosJogador1.toString()
 
-            binding.tvLabelPlayer2.text = String.format("%s:", jogo.nomeJogador2)
+            binding.tvLabelPlayer2.text = "${jogo.nomeJogador2}:"
             binding.tvScorePlayer2.text = jogo.pontosJogador2.toString()
         }
 
@@ -91,6 +95,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configurarListeners() {
+        configurarBotoesPontuacao()
+        configurarBotoesAcoes()
+    }
+
+    private fun configurarBotoesPontuacao() {
         // Botões de pontuação - Jogador 1 (IDs atualizados)
         binding.btnP1Add1.setOnClickListener {
             it.animarEstufamento()
@@ -98,19 +107,19 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnP1Add3.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(1, 3)
+            viewModel.adicionarPontos(1, PONTOS_TRUCO)
         }
         binding.btnP1Add6.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(1, 6)
+            viewModel.adicionarPontos(1, PONTOS_SEIS)
         }
         binding.btnP1Add9.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(1, 9)
+            viewModel.adicionarPontos(1, PONTOS_NOVE)
         }
         binding.btnP1Add12.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(1, 12)
+            viewModel.adicionarPontos(1, PONTOS_VITORIA)
         }
 
         // Botões de pontuação - Jogador 2 (IDs atualizados)
@@ -120,21 +129,23 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnP2Add3.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(2, 3)
+            viewModel.adicionarPontos(2, PONTOS_TRUCO)
         }
         binding.btnP2Add6.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(2, 6)
+            viewModel.adicionarPontos(2, PONTOS_SEIS)
         }
         binding.btnP2Add9.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(2, 9)
+            viewModel.adicionarPontos(2, PONTOS_NOVE)
         }
         binding.btnP2Add12.setOnClickListener {
             it.animarEstufamento()
-            viewModel.adicionarPontos(2, 12)
+            viewModel.adicionarPontos(2, PONTOS_VITORIA)
         }
+    }
 
+    private fun configurarBotoesAcoes() {
         // Botões de Ações
         binding.btnHistory.setOnClickListener {
             val jogo = viewModel.estadoJogo.value ?: return@setOnClickListener

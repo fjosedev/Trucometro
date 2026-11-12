@@ -21,7 +21,7 @@ class NomesActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.nomesRoot) { v, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val p = (16 * v.resources.displayMetrics.density).toInt()
+            val p = (MARGEM_BARRAS_DP * v.resources.displayMetrics.density).toInt()
             v.setPadding(bars.left + p, bars.top + p, bars.right + p, bars.bottom + p)
             insets
         }
