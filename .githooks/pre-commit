@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+echo "[pre-commit] Verificando formatacao com Spotless..."
+if ! sh ./gradlew spotlessCheck; then
+    echo "[pre-commit] Verificacao falhou. Para formatar, execute sh ./gradlew spotlessApply."
+    exit 1
+fi

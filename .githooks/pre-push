@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+echo "[pre-push] Executando verificacoes de qualidade..."
+sh ./gradlew spotlessCheck :app:detekt :app:lintDebug :app:testDebugUnitTest --continue

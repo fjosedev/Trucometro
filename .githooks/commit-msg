@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+subject=$(head -n 1 "$1")
+pattern='^(revert: )?(feat|fix|docs|style|refactor|perf|test|build|ci|chore|wip)(\([a-zA-Z0-9_-]+\))?!?: .{1,100}$'
+if ! printf '%s\n' "$subject" | grep -Eq "$pattern"; then
+    echo "[commit-msg] Use Conventional Commits, por exemplo: fix: corrige pontuacao"
+    exit 1
+fi
