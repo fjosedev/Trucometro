@@ -1,4 +1,5 @@
 [versions]
+# Definição das versões das dependências e plugins do projeto
 agp = "9.5.1"
 coreKtx = "1.19.1"
 junit = "4.13.2"
@@ -10,8 +11,11 @@ activityKtx = "1.13.0"
 constraintlayout = "2.2.2"
 animationCore = "1.12.1"
 archCoreTesting = "2.2.0"
+spotless = "8.11.0"
+detekt = "1.23.8"
 
 [libraries]
+# Bibliotecas e dependências utilizadas nos módulos do projeto
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -24,4 +28,7 @@ androidx-animation-core = { group = "androidx.compose.animation", name = "animat
 androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreTesting" }
 
 [plugins]
+# Mapeamento dos plugins do Gradle referenciados no projeto
 android-application = { id = "com.android.application", version.ref = "agp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
