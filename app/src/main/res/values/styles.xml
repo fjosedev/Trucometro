@@ -1,0 +1,90 @@
+<resources>
+    <!-- Card Padrão (Borda cinza sutil e fundo branco) -->
+    <style name="Widget.Trucometro.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="strokeColor">@color/stroke_subtle</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!-- Card Dupla 1 (Nós) -->
+    <style name="Widget.Trucometro.Card.Nos" parent="Widget.Trucometro.Card">
+        <item name="strokeColor">@color/nos_stroke</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <!-- Card Dupla 2 (Eles) -->
+    <style name="Widget.Trucometro.Card.Eles" parent="Widget.Trucometro.Card">
+        <item name="strokeColor">@color/eles_stroke</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <!-- Botão Base (Todos os botões do app já nascem com 12dp) -->
+    <style name="Widget.Trucometro.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">12dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Botão de Pontos Neutro (+6, +9) -->
+    <style name="Widget.Trucometro.Button.Ponto" parent="Widget.Trucometro.Button">
+        <item name="backgroundTint">@color/surface_neutral_btn</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Botão +1 (Verde) -->
+    <style name="Widget.Trucometro.Button.Ponto.Nos" parent="Widget.Trucometro.Button.Ponto">
+        <item name="backgroundTint">@color/nos_bg_soft</item>
+        <item name="android:textColor">@color/nos_primary</item>
+        <item name="strokeColor">@color/nos_stroke</item>
+        <item name="strokeWidth">1.5dp</item>
+    </style>
+
+    <!-- Botão +3 (Âmbar) -->
+    <style name="Widget.Trucometro.Button.Ponto.Eles" parent="Widget.Trucometro.Button.Ponto">
+        <item name="backgroundTint">@color/eles_bg_soft</item>
+        <item name="android:textColor">@color/eles_primary</item>
+        <item name="strokeColor">@color/eles_stroke</item>
+        <item name="strokeWidth">1.5dp</item>
+    </style>
+
+    <!-- Botão +12 e Zerar Histórico (Vermelho) -->
+    <style name="Widget.Trucometro.Button.DangerSoft" parent="Widget.Trucometro.Button.Ponto">
+        <item name="backgroundTint">@color/danger_bg_soft</item>
+        <item name="android:textColor">@color/danger_primary</item>
+        <item name="strokeColor">@color/danger_stroke</item>
+        <item name="strokeWidth">1.5dp</item>
+    </style>
+
+    <!-- Botão Secundário / Outline (Informar Nomes, Histórico, Zerar Placar, Voltar) -->
+    <style name="Widget.Trucometro.Button.Secundario" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">12dp</item>
+        <item name="backgroundTint">@color/surface_card</item>
+        <item name="strokeColor">@color/stroke_subtle</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- Botão Confirmar (Laranja Sólido) -->
+    <style name="Widget.Trucometro.Button.Confirmar" parent="Widget.Trucometro.Button">
+        <item name="backgroundTint">@color/eles_accent</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconTint">@color/text_primary</item>
+    </style>
+
+    <!-- Campo de Texto (TextInputLayout) -->
+    <style name="Widget.Trucometro.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/stroke_subtle</item>
+    </style>
+</resources>

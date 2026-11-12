@@ -7,6 +7,7 @@
     android:padding="16dp">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Trucometro.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_nome_j1">
@@ -22,6 +23,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Trucometro.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -37,15 +39,17 @@
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSalvarNomes"
+        style="@style/Widget.Trucometro.Button.Confirmar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/btn_salvar" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancelarNomes"
+        style="@style/Widget.Trucometro.Button.Secundario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

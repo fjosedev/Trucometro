@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Fundos e Superfícies -->
+    <color name="bg_screen">#F8F9FA</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="surface_neutral_btn">#F1F4F8</color>
+    <color name="stroke_subtle">#E2E8F0</color>
+
+    <!-- Textos -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#64748B</color>
+
+    <!-- Dupla 1 (Nós - Verde Esmeralda) -->
+    <color name="nos_primary">#046C4E</color>
+    <color name="nos_bg_soft">#DCFCE7</color>
+    <color name="nos_stroke">#86EFAC</color>
+
+    <!-- Dupla 2 (Eles - Âmbar / Laranja) -->
+    <color name="eles_primary">#9A3412</color>
+    <color name="eles_accent">#F59E0B</color>
+    <color name="eles_bg_soft">#FEF3C7</color>
+    <color name="eles_stroke">#FCD34D</color>
+
+    <!-- Destaque (+12 e Zerar Histórico - Vermelho Suave) -->
+    <color name="danger_primary">#991B1B</color>
+    <color name="danger_bg_soft">#FEE2E2</color>
+    <color name="danger_stroke">#FCA5A5</color>
 </resources>

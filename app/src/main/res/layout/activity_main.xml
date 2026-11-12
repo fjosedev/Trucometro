@@ -18,197 +18,328 @@
         app:titleCentered="true"
         app:titleTextColor="?attr/colorOnPrimary" />
 
-    <!-- CONTEÚDO COM SCROLL -->
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="#F8FAF8"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E2E8F0"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvModalidade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="● PAULISTA (12 PONTOS)"
+                    android:textColor="#1B5E3A"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ================= JOGADOR 1 ================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- CARD JOGADOR 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#A7F3D0"
+                app:strokeWidth="1.5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Topo: Nome da Equipe 1 + Botão -1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- TextView 1: Nome Equipe 1 -->
+                        <TextView
+                            android:id="@+id/tvLabelPlayer1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:maxLength="16"
+                            android:text="Jogador 1"
+                            android:textColor="#1B5E3A"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <!-- TextView 2: Placar Equipe 1 -->
+                    <TextView
+                        android:id="@+id/tvScorePlayer1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="64sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:letterSpacing="0.1"
+                        android:text="PONTOS"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+
+                    <!-- Grade de Botões de Tento Equipe 1 (5 botões) -->
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="2"
+                        android:rowCount="3">
+
+                        <!-- Botão 2: +1 -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP1Add1"
+                            style="@style/Widget.Trucometro.Button.Ponto.Nos"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+1" />
+
+                        <!-- Botão 3: +3 (Truco) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP1Add3"
+                            style="@style/Widget.Trucometro.Button.Ponto.Eles"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+3" />
+
+                        <!-- Botão 4: +6 (Seis) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP1Add6"
+                            style="@style/Widget.Trucometro.Button.Ponto"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+6" />
+
+                        <!-- Botão 5: +9 (Nove) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP1Add9"
+                            style="@style/Widget.Trucometro.Button.Ponto"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+9" />
+
+                        <!-- Botão 6: +12 (Jogo/Doze) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP1Add12"
+                            style="@style/Widget.Trucometro.Button.DangerSoft"
+                            android:layout_width="match_parent"
+                            android:layout_columnSpan="2"
+                            android:layout_margin="3dp"
+                            android:text="+12" />
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <!-- CARD JOGADOR 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#FDE68A"
+                app:strokeWidth="1.5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Topo: Nome da Equipe 2 + Botão -1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- TextView 3: Nome Equipe 2 -->
+                        <TextView
+                            android:id="@+id/tvLabelPlayer2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:maxLength="16"
+                            android:text="Jogador 2"
+                            android:textColor="#92400E"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- TextView 4: Placar Equipe 2 -->
+                    <TextView
+                        android:id="@+id/tvScorePlayer2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="64sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:letterSpacing="0.1"
+                        android:text="PONTOS"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+
+                    <!-- Grade de Botões de Tento Equipe 2 (5 botões) -->
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="2"
+                        android:rowCount="3">
+
+                        <!-- Botão 8: +1 -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP2Add1"
+                            style="@style/Widget.Trucometro.Button.Ponto.Eles"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+1" />
+
+                        <!-- Botão 9: +3 (Truco) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP2Add3"
+                            style="@style/Widget.Trucometro.Button.Ponto.Eles"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+3" />
+
+                        <!-- Botão 10: +6 (Seis) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP2Add6"
+                            style="@style/Widget.Trucometro.Button.Ponto"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+6" />
+
+                        <!-- Botão 11: +9 (Nove) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP2Add9"
+                            style="@style/Widget.Trucometro.Button.Ponto"
+                            android:layout_width="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="3dp"
+                            android:text="+9" />
+
+                        <!-- Botão 12: +12 (Jogo/Doze) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnP2Add12"
+                            style="@style/Widget.Trucometro.Button.DangerSoft"
+                            android:layout_width="match_parent"
+                            android:layout_columnSpan="2"
+                            android:layout_margin="3dp"
+                            android:text="+12" />
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+        <!-- Botões Inferiores de Navegação -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
 
-            <!-- ================= JOGADOR 1 ================= -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnInformarNomes"
+                style="@style/Widget.Trucometro.Button.Secundario"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:text="Informar Nomes"
+                app:icon="@drawable/ic_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/eles_accent" />
 
-                <TextView
-                    android:id="@+id/tvLabelPlayer1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/label_player_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvScorePlayer1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHistorico"
+                style="@style/Widget.Trucometro.Button.Secundario"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnP1Add1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+1" />
-
-                <Button
-                    android:id="@+id/btnP1Add3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+3" />
-
-                <Button
-                    android:id="@+id/btnP1Add6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+6" />
-
-                <Button
-                    android:id="@+id/btnP1Add9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+9" />
-
-                <Button
-                    android:id="@+id/btnP1Add12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+12" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="?android:attr/listDivider" />
-
-            <!-- ================= JOGADOR 2 ================= -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/tvLabelPlayer2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/label_player_2"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvScorePlayer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnP2Add1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+1" />
-
-                <Button
-                    android:id="@+id/btnP2Add3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+3" />
-
-                <Button
-                    android:id="@+id/btnP2Add6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+6" />
-
-                <Button
-                    android:id="@+id/btnP2Add9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+9" />
-
-                <Button
-                    android:id="@+id/btnP2Add12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+12" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="?android:attr/listDivider" />
-
-            <!-- ================= BOTÕES DE CONTROLE ================= -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_history" />
-
-                <Button
-                    android:id="@+id/btnResetHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/btn_reset_history" />
-
-                <Button
-                    android:id="@+id/btnEditNames"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/btn_edit_names" />
-            </LinearLayout>
-
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="Histórico"
+                app:icon="@drawable/ic_history"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/nos_primary" />
         </LinearLayout>
-    </ScrollView>
+
+        <!-- Botão 13: Zerar Placar da Rodada -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnZerarPlacar"
+            style="@style/Widget.Trucometro.Button.Secundario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Zerar Placar"
+            app:icon="@drawable/ic_refresh"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconSize="20dp"
+            app:iconTint="@color/text_primary" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun configurarBotoesAcoes() {
         // Botões de Ações
-        binding.btnHistory.setOnClickListener {
+        binding.btnHistorico.setOnClickListener {
             val jogo = viewModel.estadoJogo.value ?: return@setOnClickListener
             val intent =
                 Intent(this, HistoricoActivity::class.java).apply {
@@ -161,17 +161,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Pede confirmação antes de apagar vitórias e nomes
-        binding.btnResetHistory.setOnClickListener {
+        binding.btnZerarPlacar.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Zerar Histórico")
-                .setMessage("Isso apaga as vitórias, as pontuações e restaura os nomes. Continuar?")
-                .setPositiveButton("Zerar") { _, _ -> viewModel.zerarHistorico() }
+                .setTitle("Zerar Placar")
+                .setMessage(
+                    "Isso zera os pontos da rodada atual, mantendo nomes e vitórias. Continuar?",
+                )
+                .setPositiveButton("Zerar") { _, _ -> viewModel.zerarPlacar() }
                 .setNegativeButton("Cancelar", null)
                 .show()
         }
 
-        binding.btnEditNames.setOnClickListener {
+        binding.btnInformarNomes.setOnClickListener {
             val jogo = viewModel.estadoJogo.value ?: return@setOnClickListener
             val intent =
                 Intent(this, NomesActivity::class.java).apply {

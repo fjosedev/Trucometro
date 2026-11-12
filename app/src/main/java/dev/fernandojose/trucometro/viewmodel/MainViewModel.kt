@@ -10,6 +10,9 @@ import dev.fernandojose.trucometro.model.Trucometro
 // (como botões, cores ou XMLs), mas contém toda a lógica para manipular as pontuações e estados do
 // jogo.
 class MainViewModel : ViewModel() {
+    companion object {
+        private const val MAX_CARACTERES_NOME = 16
+    }
 
     // Variáveis de estado
 
@@ -76,6 +79,14 @@ class MainViewModel : ViewModel() {
         _mensagemSnackbar.value = null
     }
 
+    /** Zera os pontos da rodada sem alterar nomes ou vitórias acumuladas. */
+    fun zerarPlacar() {
+        val jogoAtual = _estadoJogo.value ?: Trucometro()
+        estadoAnterior = null
+        resetarPontosPartida(jogoAtual)
+        _estadoJogo.value = jogoAtual
+    }
+
     /** Reseta a pontuação da rodada atual sem alterar o número de vitórias acumuladas. */
     private fun resetarPontosPartida(jogo: Trucometro) {
         jogo.pontosJogador1 = 0
@@ -85,8 +96,12 @@ class MainViewModel : ViewModel() {
     /** Atualiza os nomes das equipes com os dados recebidos da NomesActivity. */
     fun atualizarNomes(nome1: String, nome2: String) {
         val jogoAtual = _estadoJogo.value ?: Trucometro()
-        if (nome1.isNotBlank()) jogoAtual.nomeJogador1 = nome1
-        if (nome2.isNotBlank()) jogoAtual.nomeJogador2 = nome2
+        if (nome1.isNotBlank()) {
+            jogoAtual.nomeJogador1 = nome1.trim().take(MAX_CARACTERES_NOME)
+        }
+        if (nome2.isNotBlank()) {
+            jogoAtual.nomeJogador2 = nome2.trim().take(MAX_CARACTERES_NOME)
+        }
         estadoAnterior = null
         _estadoJogo.value = jogoAtual
     }

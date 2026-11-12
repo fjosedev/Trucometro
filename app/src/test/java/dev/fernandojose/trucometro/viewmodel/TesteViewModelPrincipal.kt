@@ -49,6 +49,28 @@ class TesteViewModelPrincipal {
     }
 
     @Test
+    fun zerarPlacar_deveManterNomesEVitoriasEApagarSomentePontos() {
+        val viewModel = MainViewModel()
+        viewModel.atualizarNomes("Ana", "Bia")
+        viewModel.adicionarPontos(jogador = 1, pontos = 12)
+        viewModel.adicionarPontos(jogador = 2, pontos = 6)
+
+        viewModel.zerarPlacar()
+
+        val state = viewModel.estadoJogo.value
+        assertEquals("Ana", state?.nomeJogador1)
+        assertEquals("Bia", state?.nomeJogador2)
+        assertEquals(1, state?.vitoriasJogador1)
+        assertEquals(0, state?.vitoriasJogador2)
+        assertEquals(0, state?.pontosJogador1)
+        assertEquals(0, state?.pontosJogador2)
+
+        viewModel.desfazerUltimaPontuacao()
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador1)
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador2)
+    }
+
+    @Test
     fun desfazerUltimaPontuacao_deveRestaurarEstadoAnteriorApenasUmaVez() {
         val viewModel = MainViewModel()
         viewModel.adicionarPontos(jogador = 1, pontos = 6)
@@ -83,6 +105,16 @@ class TesteViewModelPrincipal {
         assertEquals(0, state?.vitoriasJogador1)
         assertEquals(0, state?.vitoriasJogador2)
         assertEquals("Histórico e pontuações foram zerados!", viewModel.mensagemToast.value)
+    }
+
+    @Test
+    fun atualizarNomes_deveRemoverEspacosELimitarNomesADezesseisCaracteres() {
+        val viewModel = MainViewModel()
+
+        viewModel.atualizarNomes("  Ana  ", "  ABCDEFGHIJKLMNOPQRST  ")
+
+        assertEquals("Ana", viewModel.estadoJogo.value?.nomeJogador1)
+        assertEquals("ABCDEFGHIJKLMNOP", viewModel.estadoJogo.value?.nomeJogador2)
     }
 
     @Test

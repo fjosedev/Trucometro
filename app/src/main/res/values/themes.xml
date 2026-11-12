@@ -1,9 +1,34 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Trucometro" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <style name="Theme.Trucometro" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Cores base do tema -->
+        <item name="colorPrimary">@color/nos_primary</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:windowBackground">@color/bg_screen</item>
+        <item name="android:statusBarColor">@color/surface_card</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Arredondamento Global (Substitui a pílula padrão do M3) -->
+        <item name="shapeAppearanceCornerSmall">@style/Shape.Trucometro.Small</item>
+        <item name="shapeAppearanceCornerMedium">@style/Shape.Trucometro.Medium</item>
+        <item name="shapeAppearanceCornerLarge">@style/Shape.Trucometro.Large</item>
+
+        <!-- Estilos padrão automáticos para todos os componentes -->
+        <item name="materialButtonStyle">@style/Widget.Trucometro.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.Trucometro.Card</item>
+        <item name="textInputStyle">@style/Widget.Trucometro.TextInputLayout</item>
     </style>
 
-    <style name="Theme.Trucometro" parent="Base.Theme.Trucometro" />
+    <!-- Formas (12dp botões/inputs, 16dp médio, 20dp cards grandes) -->
+    <style name="Shape.Trucometro.Small" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Shape.Trucometro.Medium" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="Shape.Trucometro.Large" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerSize">20dp</item>
+    </style>
 </resources>
