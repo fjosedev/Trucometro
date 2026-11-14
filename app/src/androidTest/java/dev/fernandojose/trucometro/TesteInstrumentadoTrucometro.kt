@@ -10,7 +10,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.fernandojose.trucometro.view.MainActivity
-import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -60,7 +59,7 @@ class TesteInstrumentadoTrucometro {
     }
 
     @Test
-    fun aoZerarPlacar_deveManterNomesEVitoriasEAtualizarTela() {
+    fun aoZerarHistorico_deveApagarVitoriasEPontuacoesERestaurarNomesPadrao() {
         onView(withId(R.id.btnInformarNomes)).perform(click())
         onView(withId(R.id.etNomeJ1)).perform(replaceText("Ana"))
         onView(withId(R.id.etNomeJ2)).perform(replaceText("Bia"), closeSoftKeyboard())
@@ -69,20 +68,16 @@ class TesteInstrumentadoTrucometro {
         onView(withId(R.id.btnP1Add12)).perform(click())
         onView(withText("OK")).perform(click())
         onView(withId(R.id.btnP2Add3)).perform(click())
-        regraCenario.scenario.onActivity { activity ->
-            assertTrue(
-                activity.findViewById<android.view.View>(R.id.btnZerarPlacar).performClick(),
-            )
-        }
+        onView(withId(R.id.btnZerarHistorico)).perform(click())
         onView(withId(android.R.id.button1)).perform(click())
 
-        onView(withId(R.id.tvLabelPlayer1)).check(matches(withText("Ana:")))
-        onView(withId(R.id.tvLabelPlayer2)).check(matches(withText("Bia:")))
+        onView(withId(R.id.tvLabelPlayer1)).check(matches(withText("Jogador 1:")))
+        onView(withId(R.id.tvLabelPlayer2)).check(matches(withText("Jogador 2:")))
         onView(withId(R.id.tvScorePlayer1)).check(matches(withText("0")))
         onView(withId(R.id.tvScorePlayer2)).check(matches(withText("0")))
 
         onView(withId(R.id.btnHistorico)).perform(click())
-        onView(withId(R.id.tvHistNomeJ1)).check(matches(withText("Ana")))
-        onView(withId(R.id.tvHistVitoriasJ1)).check(matches(withText("1")))
+        onView(withId(R.id.tvHistNomeJ1)).check(matches(withText("Jogador 1")))
+        onView(withId(R.id.tvHistVitoriasJ1)).check(matches(withText("0")))
     }
 }

@@ -85,7 +85,7 @@ class TesteViewModelPrincipal {
     }
 
     @Test
-    fun atualizarNomes_deveIgnorarNomesVaziosEZerarHistoricoDeveRestaurarPadroes() {
+    fun atualizarNomes_deveIgnorarNomesVazios() {
         val viewModel = MainViewModel()
         viewModel.atualizarNomes("Ana", "Bia")
         viewModel.adicionarPontos(jogador = 1, pontos = 6)
@@ -94,6 +94,14 @@ class TesteViewModelPrincipal {
         assertEquals("Ana", viewModel.estadoJogo.value?.nomeJogador1)
         assertEquals("Carlos", viewModel.estadoJogo.value?.nomeJogador2)
         assertEquals(6, viewModel.estadoJogo.value?.pontosJogador1)
+    }
+
+    @Test
+    fun zerarHistorico_deveApagarVitoriasEPontuacoesERestaurarNomesPadrao() {
+        val viewModel = MainViewModel()
+        viewModel.atualizarNomes("Ana", "Bia")
+        viewModel.adicionarPontos(jogador = 1, pontos = 12)
+        viewModel.adicionarPontos(jogador = 2, pontos = 6)
 
         viewModel.zerarHistorico()
 

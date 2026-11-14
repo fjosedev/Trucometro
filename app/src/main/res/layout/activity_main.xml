@@ -328,14 +328,14 @@
                 app:iconTint="@color/nos_primary" />
         </LinearLayout>
 
-        <!-- Botão 13: Zerar Placar da Rodada -->
+        <!-- Botão para zerar o histórico -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnZerarPlacar"
+            android:id="@+id/btnZerarHistorico"
             style="@style/Widget.Trucometro.Button.Secundario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Zerar Placar"
+            android:text="@string/btn_reset_history"
             app:icon="@drawable/ic_refresh"
             app:iconGravity="textStart"
             app:iconPadding="8dp"

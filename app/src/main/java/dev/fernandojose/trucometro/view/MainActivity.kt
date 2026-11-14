@@ -161,13 +161,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnZerarPlacar.setOnClickListener {
+        binding.btnZerarHistorico.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Zerar Placar")
+                .setTitle("Zerar Histórico")
                 .setMessage(
-                    "Isso zera os pontos da rodada atual, mantendo nomes e vitórias. Continuar?",
+                    "Isso apaga o histórico de vitórias e zera as pontuações e os nomes. Continuar?",
                 )
-                .setPositiveButton("Zerar") { _, _ -> viewModel.zerarPlacar() }
+                .setPositiveButton("Zerar") { _, _ -> viewModel.zerarHistorico() }
                 .setNegativeButton("Cancelar", null)
                 .show()
         }
