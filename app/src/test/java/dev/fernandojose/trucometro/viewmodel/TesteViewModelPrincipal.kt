@@ -34,7 +34,21 @@ class TesteViewModelPrincipal {
     }
 
     @Test
-    fun adicionarDozePontos_deveRegistrarVitoriaEZerarPontuacoesDaRodada() {
+    fun botoesDePontuacao_deveAdicionarValoresCorrespondentes() {
+        val pontosDosBotoes = listOf(1, 3, 6, 9, 12)
+
+        pontosDosBotoes.forEach { pontos ->
+            val viewModel = MainViewModel()
+
+            viewModel.adicionarPontos(jogador = 1, pontos = pontos)
+
+            assertEquals(pontos, viewModel.estadoJogo.value?.pontosJogador1)
+            assertEquals(0, viewModel.estadoJogo.value?.pontosJogador2)
+        }
+    }
+
+    @Test
+    fun adicionarPontos_aoAtingirDozeDeveRegistrarVitoriaEEsperarConfirmacaoParaZerar() {
         val viewModel = MainViewModel()
         viewModel.atualizarNomes("Ana", "Bia")
         viewModel.adicionarPontos(jogador = 1, pontos = 9)
@@ -43,9 +57,28 @@ class TesteViewModelPrincipal {
 
         val state = viewModel.estadoJogo.value
         assertEquals(1, state?.vitoriasJogador1)
-        assertEquals(0, state?.pontosJogador1)
+        assertEquals(12, state?.pontosJogador1)
         assertEquals(0, state?.pontosJogador2)
         assertEquals("Ana venceu a partida!", viewModel.eventoVitoria.value)
+
+        viewModel.finalizarPartida()
+
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador1)
+        assertEquals(0, viewModel.estadoJogo.value?.pontosJogador2)
+        assertEquals(1, viewModel.estadoJogo.value?.vitoriasJogador1)
+        assertEquals("Ana", viewModel.estadoJogo.value?.nomeJogador1)
+    }
+
+    @Test
+    fun adicionarPontos_acimaDeDozeTambemDeveRegistrarVitoria() {
+        val viewModel = MainViewModel()
+        viewModel.adicionarPontos(jogador = 2, pontos = 9)
+
+        viewModel.adicionarPontos(jogador = 2, pontos = 6)
+
+        assertEquals(1, viewModel.estadoJogo.value?.vitoriasJogador2)
+        assertEquals(15, viewModel.estadoJogo.value?.pontosJogador2)
+        assertEquals("Jogador 2 venceu a partida!", viewModel.eventoVitoria.value)
     }
 
     @Test

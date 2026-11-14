@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import dev.fernandojose.trucometro.R
 import dev.fernandojose.trucometro.databinding.ActivityNomesBinding
 
 // Permite editar os nomes dos jogadores e devolve o resultado para a MainActivity.
@@ -18,11 +19,12 @@ class NomesActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityNomesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        findViewById<android.widget.TextView>(R.id.toolbarStatus)
+            .setText(R.string.status_personalizacao)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.nomesRoot) { v, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val p = (MARGEM_BARRAS_DP * v.resources.displayMetrics.density).toInt()
-            v.setPadding(bars.left + p, bars.top + p, bars.right + p, bars.bottom + p)
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 

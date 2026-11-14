@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:orientation="vertical"
     tools:context=".view.MainActivity">
+
+    <include layout="@layout/view_top_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- TOP BAR / TOOLBAR -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="@string/app_name"
-            app:titleCentered="true"
-            app:titleTextColor="?attr/colorOnPrimary" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F8FAF8"
-            android:orientation="vertical"
-            android:padding="16dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F8FAF8"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/surface_card"
             app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#E2E8F0"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/stroke_subtle"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -51,8 +40,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="● PAULISTA (12 PONTOS)"
-                    android:textColor="#1B5E3A"
+                    android:text="@string/modalidade_paulista"
+                    android:textColor="@color/nos_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -61,23 +50,24 @@
         <!-- ================= JOGADOR 1 ================= -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
             <!-- CARD JOGADOR 1 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#A7F3D0"
-                app:strokeWidth="1.5dp">
+                app:cardElevation="1dp"
+                app:strokeColor="@color/nos_stroke"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
                     android:padding="12dp">
@@ -95,10 +85,11 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:maxLength="16"
+                            android:ellipsize="end"
                             android:text="Jogador 1"
-                            android:textColor="#1B5E3A"
-                            android:textSize="18sp"
+                            android:textColor="@color/nos_primary"
+                            android:textSize="16sp"
+                            android:singleLine="true"
                             android:textStyle="bold" />
 
 
@@ -111,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textColor="#0F172A"
-                        android:textSize="64sp"
+                        android:textSize="56sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -181,18 +172,18 @@
             <!-- CARD JOGADOR 2 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#FDE68A"
-                app:strokeWidth="1.5dp">
+                app:cardElevation="1dp"
+                app:strokeColor="@color/eles_stroke"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
                     android:padding="12dp">
@@ -210,10 +201,11 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:maxLength="16"
+                            android:ellipsize="end"
                             android:text="Jogador 2"
-                            android:textColor="#92400E"
-                            android:textSize="18sp"
+                            android:textColor="@color/eles_primary"
+                            android:textSize="16sp"
+                            android:singleLine="true"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -224,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textColor="#0F172A"
-                        android:textSize="64sp"
+                        android:textSize="56sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -306,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:text="Informar Nomes"
+                android:text="@string/btn_edit_names"
                 app:icon="@drawable/ic_edit"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
@@ -342,7 +334,6 @@
             app:iconSize="20dp"
             app:iconTint="@color/text_primary" />
 
-        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

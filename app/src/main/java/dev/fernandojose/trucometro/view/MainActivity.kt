@@ -71,9 +71,12 @@ class MainActivity : AppCompatActivity() {
                 AlertDialog.Builder(this)
                     .setTitle("Fim de Partida!")
                     .setMessage(it)
-                    .setPositiveButton("OK", null)
+                    .setCancelable(false)
+                    .setPositiveButton("OK") { _, _ ->
+                        viewModel.finalizarPartida()
+                        viewModel.limparEventoVitoria()
+                    }
                     .show()
-                viewModel.limparEventoVitoria()
             }
         }
 

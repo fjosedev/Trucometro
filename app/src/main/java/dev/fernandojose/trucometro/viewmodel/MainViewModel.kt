@@ -40,10 +40,12 @@ class MainViewModel : ViewModel() {
     private var estadoAnterior: Trucometro? = null
 
     /**
-     * Incrementa os pontos (+1, +3, +6, +9 ou +12) do jogador selecionado. Verifica se o jogador
-     * atingiu 12 pontos para registrar a vitória e zerar a rodada.
+     * Incrementa os pontos (+1, +3, +6, +9 ou +12) do jogador selecionado. Ao atingir a pontuação
+     * de vitória, registra a vitória e aguarda a confirmação da mensagem antes de zerar a rodada.
      */
     fun adicionarPontos(jogador: Int, pontos: Int) {
+        if (_eventoVitoria.value != null) return
+
         val jogoAtual = _estadoJogo.value ?: Trucometro()
         estadoAnterior = jogoAtual.copy()
         val nome = if (jogador == 1) jogoAtual.nomeJogador1 else jogoAtual.nomeJogador2
@@ -54,18 +56,24 @@ class MainViewModel : ViewModel() {
             if (jogoAtual.pontosJogador1 >= PONTOS_VITORIA) {
                 jogoAtual.vitoriasJogador1++
                 _eventoVitoria.value = "${jogoAtual.nomeJogador1} venceu a partida!"
-                resetarPontosPartida(jogoAtual)
             }
         } else if (jogador == 2) {
             jogoAtual.pontosJogador2 += pontos
             if (jogoAtual.pontosJogador2 >= PONTOS_VITORIA) {
                 jogoAtual.vitoriasJogador2++
                 _eventoVitoria.value = "${jogoAtual.nomeJogador2} venceu a partida!"
-                resetarPontosPartida(jogoAtual)
             }
         }
 
         // Notifica a MainActivity que o estado foi alterado
+        _estadoJogo.value = jogoAtual
+    }
+
+    /** Zera os pontos da rodada após o usuário confirmar a mensagem de vitória. */
+    fun finalizarPartida() {
+        val jogoAtual = _estadoJogo.value ?: return
+        estadoAnterior = null
+        resetarPontosPartida(jogoAtual)
         _estadoJogo.value = jogoAtual
     }
 

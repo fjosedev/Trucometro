@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Trucômetro</string>
+    <string name="toolbar_title">Trucômetro</string>
     <string name="label_player_1">Jogador 1:</string>
     <string name="label_player_2">Jogador 2:</string>
     <string name="btn_history">Hist. de Jogadas</string>
     <string name="btn_reset_history">Zerar Histórico</string>
     <string name="btn_edit_names">Inf. Nomes</string>
+    <string name="status_partida_ativa">PARTIDA ATIVA</string>
+    <string name="status_personalizacao">PERSONALIZAÇÃO</string>
+    <string name="status_historico">HISTÓRICO</string>
+    <string name="modalidade_paulista">PAULISTA (12 PONTOS)</string>
+    <string name="nome_times_heading">Identidade das Duplas</string>
+    <string name="nome_times_description">Defina os nomes das equipes para a partida.</string>
+    <string name="historico_subtitulo">Placar de vitórias desta partida.</string>
     <string name="titulo_nomes">Informar Nomes</string>
     <string name="titulo_historico">Histórico de Jogadas</string>
     <string name="titulo_vitorias">Vitórias</string>

@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import dev.fernandojose.trucometro.R
 import dev.fernandojose.trucometro.databinding.ActivityHistoricoBinding
 
 // Exibe o total de vitórias de cada jogador, recebido da MainActivity via Intent.
@@ -17,11 +18,11 @@ class HistoricoActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityHistoricoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        findViewById<android.widget.TextView>(R.id.toolbarStatus).setText(R.string.status_historico)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.historicoRoot) { v, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val p = (MARGEM_BARRAS_DP * v.resources.displayMetrics.density).toInt()
-            v.setPadding(bars.left + p, bars.top + p, bars.right + p, bars.bottom + p)
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
