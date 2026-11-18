@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         // Exibe Snackbar com "Desfazer" após cada pontuação
         viewModel.mensagemSnackbar.observe(this) { mensagem ->
             mensagem?.let {
-                Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
+                Snackbar.make(binding.snackbarContainer, it, Snackbar.LENGTH_LONG)
                     .setAction("Desfazer") { viewModel.desfazerUltimaPontuacao() }
                     .show()
                 viewModel.limparMensagemSnackbar()

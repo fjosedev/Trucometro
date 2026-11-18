@@ -336,4 +336,10 @@
 
     </LinearLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/snackbarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8FAF8" />
+
 </LinearLayout>
